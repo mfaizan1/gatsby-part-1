@@ -1,6 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
-import LayoutWrapper from "../components/LayoutWrapper"
+import { LayoutWrapper } from "../components"
 
 export default function Home() {
   return (

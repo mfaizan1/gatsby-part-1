@@ -1,5 +1,9 @@
 import React from "react"
-
+import { LayoutWrapper } from "../components"
 export default function products() {
-  return <div>Products</div>
+  return (
+    <LayoutWrapper>
+      <div>Products</div>
+    </LayoutWrapper>
+  )
 }
