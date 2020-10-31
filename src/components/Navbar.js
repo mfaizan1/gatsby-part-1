@@ -13,6 +13,9 @@ function Navbar() {
         <li>
           <Link to="/blog">blog</Link>
         </li>
+        <li>
+          <Link to="/examples">examples</Link>
+        </li>
       </ul>
     </nav>
   )
