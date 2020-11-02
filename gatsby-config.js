@@ -16,5 +16,16 @@ module.exports = {
     },
     data: ["item 1", "item 2", "item 3"],
   },
-  plugins: [`gatsby-plugin-styled-components`],
+  plugins: [
+    `gatsby-plugin-styled-components`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
+  ],
 }
