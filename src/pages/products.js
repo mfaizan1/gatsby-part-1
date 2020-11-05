@@ -1,20 +1,57 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { LayoutWrapper } from "../components"
 import styles from "./products.module.css"
-export default function products() {
+import Image from "gatsby-image"
+import { Link } from "gatsby"
+
+const Products = ({ data }) => {
+  const {
+    allContentfulProduct: { nodes: products },
+  } = data
+  console.log(products)
   return (
     <LayoutWrapper>
-      <h1>Products</h1>
-      <p className={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor
-        vel massa non mattis. Nullam eu enim quis turpis blandit vehicula sed in
-        ante. Nunc et leo nibh. Nulla eros enim, gravida sed hendrerit eu,
-        rhoncus in orci. Nulla euismod posuere accumsan. Donec fringilla nulla
-        in urna scelerisque, gravida luctus velit volutpat. Sed at commodo
-        metus. Cras lobortis non nunc in pulvinar. Vivamus finibus molestie
-        elementum. Nunc tincidunt dolor at tincidunt sollicitudin. Sed risus
-        nulla, rhoncus eu mauris ac, tempus mollis mi.
-      </p>
+      <section className={styles.page}>
+        <h1>Hello from products</h1>
+      </section>
+      <section className={styles.products}>
+        {products.map(elem => {
+          return (
+            <article key={elem.id}>
+              <Image fluid={elem.image.fluid} />
+              <h3>
+                {elem.title}
+                <span>{elem.price}</span>
+              </h3>
+              <Link to={`/products/${elem.slug}`}>More details</Link>
+            </article>
+          )
+        })}
+      </section>
     </LayoutWrapper>
   )
 }
+
+export const query = graphql`
+  {
+    allContentfulProduct {
+      nodes {
+        id
+        price
+        title
+        slug
+        description {
+          description
+        }
+        image {
+          fluid {
+            ...GatsbyContentfulFluid_tracedSVG
+          }
+        }
+      }
+    }
+  }
+`
+
+export default Products

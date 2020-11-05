@@ -1,3 +1,32 @@
 .text {
   color: red;
 }
+
+.page {
+  width: 90vw;
+  max-width: 1170px;
+  text-transform: capitalize;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2rem;
+}
+
+.products span {
+  margin-left: 2rem;
+}
+.products article {
+  margin: 2rem 0;
+}
+
+@media screen and (max-width: 999px) {
+  .products {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.products div {
+  height: 20rem;
+}
